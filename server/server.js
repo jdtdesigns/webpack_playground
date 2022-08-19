@@ -6,8 +6,10 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../client/dist')))
 
-app.get('/', (req, res) => {
-  res.send('server works');
+app.get('/api/test', (req, res) => {
+  res.json({
+    message: 'Hi from the backend!'
+  });
 });
 
 app.listen(PORT, () => console.log('Server running on %s', PORT));

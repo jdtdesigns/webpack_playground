@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "concurrently \"cd client && npm run build\" \"cd server && npm start\""
+    "serve": "concurrently \"cd client && npm run build\" \"cd server && npm start\"",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && nodemon server.js\""
   },
   "repository": {
     "type": "git",
