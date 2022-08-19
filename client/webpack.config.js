@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const is_prod = process.env.NODE_ENV === 'production';
 
@@ -16,7 +17,26 @@ const plugins = [
   })
 ];
 
-if (is_prod) plugins.push(new GenerateSW());
+if (is_prod) plugins.push(...[
+  new GenerateSW(),
+  new WebpackPwaManifest({
+    name: 'Webpack Example',
+    short_name: 'WPEx',
+    description: 'Example on setting PWA workflow',
+    background_color: '#555555',
+    start_url: './',
+    publicPath: './',
+    inject: true,
+    theme_color: '#555555',
+    icons: [
+      {
+        src: path.resolve('src/images/blue-robot.png'),
+        sizes: [96, 128, 192, 256, 384, 512], // multiple sizes,
+        ios: true
+      },
+    ]
+  })
+]);
 
 
 module.exports = {
