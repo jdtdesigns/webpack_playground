@@ -1,17 +1,30 @@
-import counter from './libs/counter';
-import starwars_request from './libs/starwars_request';
+import Main from './components/Main';
+import Header from './components/Header';
 import './css/style.css';
-import './css/another.css';
-import createList from './libs/create_list';
 
 
+function App() {
+  const state = {
+    logo: 'Component Example',
+    title: 'Component Example',
+    text: 'This is a very basic example of an html component'
+  }
 
-createList(['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']);
+  const html = `${Header(state)} ${Main(state)}`;
 
-// if (module.hot) {
-//   module.hot.accept((err) => {
-//     if (err) {
-//       console.error('Cannot apply HMR update.', err);
-//     }
-//   });
-// }
+  document.body.innerHTML = html;
+}
+
+App();
+
+if ('serviceWorker' in navigator) {
+  // Register a service worker hosted at the root of the
+  // site using the default scope.
+  navigator.serviceWorker.register('service-worker.js').then((registration) => {
+    console.log('Service worker registration succeeded:', registration);
+  }, /*catch*/(error) => {
+    console.error(`Service worker registration failed: ${error}`);
+  });
+} else {
+  console.error('Service workers are not supported.');
+}

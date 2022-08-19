@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -21,6 +22,16 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
   },
@@ -30,6 +41,7 @@ module.exports = {
       filename: 'index.html',
       template: path.join(__dirname, 'src/index.html'),
       inject: 'body'
-    })
+    }),
+    new GenerateSW()
   ]
 }

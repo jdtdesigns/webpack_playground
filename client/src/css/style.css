@@ -9,3 +9,11 @@ h1 {
 ul li {
   color: #fff;
 }
+
+.row {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
