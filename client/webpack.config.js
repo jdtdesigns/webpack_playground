@@ -28,6 +28,7 @@ if (is_prod) plugins.push(...[
     publicPath: './',
     inject: true,
     theme_color: '#555555',
+    ios: true,
     icons: [
       {
         src: path.resolve('src/images/blue-robot.png'),

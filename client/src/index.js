@@ -1,6 +1,17 @@
+import db from './db';
 import './css/style.css';
 
+db.init()
+  .then(async () => {
+    // const result = await db.createGroup({
+    //   group_name: 'team garf'
+    // });
 
+    // console.log(result);
+
+    const groups = await db.find();
+    console.log(groups);
+  })
 
 if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
   // Register a service worker hosted at the root of the
