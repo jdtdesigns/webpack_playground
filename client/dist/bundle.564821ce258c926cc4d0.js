@@ -1,1 +1,0 @@
-(()=>{"use strict";"serviceWorker"in navigator?navigator.serviceWorker.register("service-worker.js").then((function(e){console.log("Service worker registration succeeded:",e)}),(function(e){console.error("Service worker registration failed: ".concat(e))})):console.error("Service workers are not supported.")})();
